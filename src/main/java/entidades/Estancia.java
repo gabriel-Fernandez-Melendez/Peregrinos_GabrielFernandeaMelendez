@@ -1,12 +1,19 @@
 package entidades;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Estancia {
 	//campos de la clase con las especificaciones del esquema
 	private Long id;
 	private LocalDate fecha;
 	private boolean vip;
+	
+	//conexion con la clase peregrino
+	private Peregrino peregrino;
+	private Parada parada;
+	//campo de conexion con el objeto peregrino(por medio de una coleccion)
+		private List<Peregrino> peregrinos;
 	//constructor por defecto
 	public Estancia() {
 		

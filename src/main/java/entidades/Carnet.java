@@ -9,6 +9,9 @@ public class Carnet {
 	private Float distancia;
 	private int n_vips;
 	
+	//conexion con la parada(falta por meter en el constructor)
+	private Parada parada;
+	
 	//constructor por defecto
 	public Carnet() {
 		

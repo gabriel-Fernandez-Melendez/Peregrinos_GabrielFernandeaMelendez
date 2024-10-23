@@ -1,11 +1,19 @@
 package entidades;
 
+import java.util.List;
+
 public class Parada {
 	//campos de la clase con las especificaciones del esquema
 	private Long id;
 	private String nombre;
 	private char region;
 	private String responsable_parada;
+	//conexion con la clase carnet
+	private Carnet carnet;
+	//conexion con la clase estancia
+	private Estancia estancia;
+	//campo de conexion con el objeto peregrino(por medio de una coleccion)
+	private List<Peregrino> peregrinos;
 	
 	//constructor por defecto
 	public Parada() {
