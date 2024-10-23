@@ -11,9 +11,9 @@ public class Estancia {
 	
 	//conexion con la clase peregrino
 	private Peregrino peregrino;
+	//conexion con la clase peregrino
 	private Parada parada;
-	//campo de conexion con el objeto peregrino(por medio de una coleccion)
-		private List<Peregrino> peregrinos;
+	
 	//constructor por defecto
 	public Estancia() {
 		
@@ -49,6 +49,8 @@ public class Estancia {
 	public String toString() {
 		return "Estancia [id=" + id + ", fecha=" + fecha + ", vip=" + vip + "]";
 	}
+	//dvqervqeihrvbaevbafvbpv
+	//qewfqervrqeqbva
 	
 	
 }
