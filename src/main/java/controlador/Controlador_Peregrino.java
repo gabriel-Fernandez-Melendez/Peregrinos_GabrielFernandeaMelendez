@@ -27,14 +27,15 @@ public class Controlador_Peregrino {
 	}
 	
 	public static void EscribirCredenciales(Peregrino p) {
-		String path = "\\FicherosPeregrino\\responsables.txt";
+		//puede dar problemas el pegar contenido y que traiga mas de un separador entre ellas
+		String path = "FicherosPeregrino/responsables.txt";
 		File fichero = new File(path);
 		FileWriter escritor = null;
 		PrintWriter buffer = null;		
 		try {
 			escritor = new FileWriter(fichero,true);			
 			buffer = new PrintWriter(escritor);
-			buffer.print(p.getNombre()+" "+p.getContraseña()+" "+p.getCargo().getCargo()+" "+p.getId());
+			buffer.print(p.getNombre()+" "+p.getContraseña()+" "+p.getCargo().getTipoDeUsuario()+" "+p.getId()+" \n");
 				if (buffer != null) {
 					buffer.close();
 				}

@@ -19,7 +19,7 @@ public class Peregrino {
 	private List<Parada> paradas;
 	
 	//para que el peregrino funcione como un usuario hasta que se incluya la base de datos metere un campo de enum que se encargara de diferenciar a donde tiene acceso el peregrino
-	private Usuarios cargo;
+	private Usuarios tipo_usuario;
 		
 	//constructor por defecto
 	public Peregrino() {		
@@ -29,7 +29,7 @@ public class Peregrino {
 		this.id=id;
 		this.nombre=nombre;
 		this.contraseña=contraseña;
-		this.cargo=cargo;
+		this.tipo_usuario=cargo;
 	}
 	//constructor usando todos los argumentos
 	public Peregrino(Long id, String nombre, String nacionalidad,Carnet carnet_peregrino,List<Estancia> estancias,Usuarios cargo) {
@@ -39,7 +39,7 @@ public class Peregrino {
 		this.nacionalidad = nacionalidad;
 		this.carnet_peregrino= carnet_peregrino;
 		this.estancias= estancias;
-		this.cargo=cargo;
+		this.tipo_usuario=cargo;
 	}
 	
 	//getter y setters
@@ -84,10 +84,10 @@ public class Peregrino {
 	
 	//getter de la enum
 	public Usuarios getCargo() {
-		return cargo;
+		return tipo_usuario;
 	}
 	public void setCargo(Usuarios cargo) {
-		this.cargo = cargo;
+		this.tipo_usuario = cargo;
 	}
 	
 	//getters y setters de la coleccion

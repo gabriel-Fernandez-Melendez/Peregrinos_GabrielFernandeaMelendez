@@ -14,6 +14,7 @@ public class Principal_Peregrinos {
 		p.setContraseña("gabo");
 		p.setId(Long.valueOf(1));
 		Controlador_Peregrino.EscribirCredenciales(p);
+		System.out.println("funciona");
 	}
 
 }
