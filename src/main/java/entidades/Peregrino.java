@@ -6,9 +6,7 @@ public class Peregrino {
 	//campos de la clase con las especificaciones del esquema
 	private Long id;
 	private String nombre;
-	private String nacionalidad;
-	private String contraseña;
-	
+	private String nacionalidad;	
 	//campo de conexion con el objeto carnet
 	private Carnet carnet_peregrino;
 	
@@ -24,13 +22,7 @@ public class Peregrino {
 	//constructor por defecto
 	public Peregrino() {		
 	}
-	//constructor del peregrino para las credenciales
-	public Peregrino(Long id,String nombre,String contraseña,Usuarios cargo) {
-		this.id=id;
-		this.nombre=nombre;
-		this.contraseña=contraseña;
-		this.tipo_usuario=cargo;
-	}
+
 	//constructor usando todos los argumentos
 	public Peregrino(Long id, String nombre, String nacionalidad,Carnet carnet_peregrino,List<Estancia> estancias,Usuarios cargo) {
 		super();
@@ -61,12 +53,6 @@ public class Peregrino {
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
 	}	
-	public String getContraseña() {
-		return contraseña;
-	}
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
-	}
 	//getters y setters de la conexion con el carnet
 	public Carnet getCarnet_peregrino() {
 		return carnet_peregrino;
