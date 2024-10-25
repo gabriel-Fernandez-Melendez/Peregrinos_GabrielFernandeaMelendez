@@ -123,15 +123,13 @@ public class Controlador_CredencialesUsuario {
 				log = new CredencialesUsuario(cred.getNombre(),cred.getClave(),cred.getTipo_usuario(),cred.getId());
 				val=true;
 				break;
-			}
-			
+			}			
 		}
 		if(!val) {
 		System.out.println("el usuario no existe, porfavor introduzca un usuario valido");
 			val=false;
 			}
 		}while(!val);
-
 		scan.close();
 		return log;
 	}
