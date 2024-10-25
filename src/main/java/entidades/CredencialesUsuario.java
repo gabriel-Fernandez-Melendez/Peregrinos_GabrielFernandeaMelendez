@@ -50,9 +50,10 @@ public class CredencialesUsuario {
 		this.id = id;
 	}
 
+	
 	@Override
 	public String toString() {
-		//poner aqui la estructura que ira a credenciales
+		//poner aqui la estructura que se importa a credenciales.txt
 		return getNombre()+" "+getClave()+" "+getTipo_usuario().getTipoDeUsuario()+" "+getId()+" \n";
 	}
 	
