@@ -1,8 +1,13 @@
 package entidades;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Parada {
+public class Parada implements Serializable{//NOTA habra que hacer otro constructor en el futuro
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//campos de la clase con las especificaciones del esquema
 	private Long id;
 	private String nombre;
@@ -19,6 +24,7 @@ public class Parada {
 	public Parada() {
 		
 	}
+	
 	//constructor usando todos los argumentos
 	public Parada(Long id, String nombre, char region, String responsable_parada) {
 		super();
@@ -55,8 +61,7 @@ public class Parada {
 	//metodo to string(por defecto aun sin ser modificado)
 	@Override
 	public String toString() {
-		return "Parada [id=" + id + ", nombre=" + nombre + ", region=" + region + ", responsable_parada="
-				+ responsable_parada + "]";
+		return getId()+" "+getNombre()+" "+getRegion()+" "+getResponsable_parada();
 	}
 	
 	
