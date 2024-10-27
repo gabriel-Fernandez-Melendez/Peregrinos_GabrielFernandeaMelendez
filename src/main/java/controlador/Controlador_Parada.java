@@ -81,18 +81,54 @@ public class Controlador_Parada {
 	}
 	
 	//crear primero el metodo de importar exportar paradas.dat
-	public Parada NuevaParada(CredencialesUsuario cred) {
+	public Parada NuevaParada() {
+		CredencialesUsuario responsable = new CredencialesUsuario();
 		Parada parada =new Parada();
 		System.out.println("Usted esta creando una  nueva parada");
 		Scanner scan =new Scanner(System.in);
 		System.out.println("inserte el nombre de la parada");
-		String nombre = scan.nextLine();
-		parada.setNombre(nombre);
+		String nombre_parada = scan.nextLine();
 		System.out.println("inserte el caracter de la region donde esta la parada");
 		char region = scan.next().charAt(0);
-		parada.setRegion(region);		
-		//este metodo continuara cuando tengamos el metodo de incluir datos en credencias
-		scan.close();		
+		System.out.println("ahora introduzca las credenciales del que sera responsable de la parada");
+		System.out.println("introduzca el nombre: ");
+		String nombre_responsable = scan.nextLine();
+		System.out.println("introduzca la contraseña: ");
+		String cantraseña_responsable = scan.nextLine();
+		//validamos el usuario
+		responsable.setNombre(nombre_responsable);
+		responsable.setClave(cantraseña_responsable);
+		//sobre escribimos el objeto ahora con los campos que faltaban
+		responsable= Controlador_CredencialesUsuario.UsuarioValido_AdminParada(responsable);
+		//validamos la parada
+		parada.setNombre(nombre_parada);
+		parada.setRegion(region);
+		parada=ValidadorParadas(parada);
+		parada.setResponsable_parada(nombre_responsable);
+		scan.close();
+		//lo esporto a los ficheros desde el propio metodo
+		ExportarParadas(parada);
+		Controlador_CredencialesUsuario.EscribirCredenciales(responsable);
 		return parada;		
+	}
+	
+	public static Parada ValidadorParadas(Parada p) {
+		long id;
+		ArrayList<Parada> paradas= new ArrayList<Parada>();
+		paradas= ListaDeParadas();
+		for(Parada par:paradas) {
+			if(par.getNombre().equalsIgnoreCase(p.getNombre())&&par.getRegion()==p.getRegion()) {
+				System.out.println("los datos de esta parada ya estan registrados");
+				break;
+			}
+			}
+		//asi calculamos el id
+				System.out.println("los datos son correctos, se incluira la parada: "+p.getNombre());
+				id =(long) ((paradas.size())+1);
+				p.setId(id);
+
+			
+	
+		return p;
 	}
 }

@@ -2,7 +2,7 @@ package entidades;
 
 public enum Usuarios {
 	//posibles perfiles que puede tomar el usuario
-Invitado("invitado"),Responsable_Parada("Responsable_parada"),Peregrino("Responsable_parada"),Administrador_General("Administrador_general");
+Invitado("invitado"),Responsable_Parada("Responsable_parada"),Peregrino("Peregrino"),Administrador_General("Administrador_general");
 	private String tipo_usuario;
 	//constructor de la enum
 	private Usuarios(String tipo_usuario) {

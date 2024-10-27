@@ -1,3 +1,5 @@
 gabo gabo Responsable_parada 1 
 gabo gabo Responsable_parada 1 
 gabo gabo Responsable_parada 1 
+nuevo nuevo Responsable_parada 4 
+bueno bueno Peregrino 5 

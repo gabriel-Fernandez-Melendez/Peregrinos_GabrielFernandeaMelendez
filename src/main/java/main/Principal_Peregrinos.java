@@ -4,7 +4,9 @@ import entidades.CredencialesUsuario;
 import entidades.Parada;
 import entidades.Peregrino;
 import entidades.Usuarios;
+import vista.Menus;
 
+import java.awt.Menu;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -37,12 +39,17 @@ public class Principal_Peregrinos {
 		 * Controlador_Parada.ExportarParadas(p4);
 		 * Controlador_Parada.ExportarParadas(p5);
 		 */
-		  ArrayList<Parada> paradas= new ArrayList<Parada>();
-		  paradas=Controlador_Parada.ListaDeParadas();
-		  System.out.println("paradas tamaño "+paradas.size());
-		  for(Parada per : paradas) {
-			  System.out.println("nombre de parada"+ per.getNombre());
-		  }
+		/*
+		 * 
+		 * 
+		 * 
+		 * ArrayList<Parada> paradas= new ArrayList<Parada>();
+		 * paradas=Controlador_Parada.ListaDeParadas();
+		 * System.out.println("paradas tamaño "+paradas.size()); for(Parada per :
+		 * paradas) { System.out.println("nombre de parada"+ per.getNombre()); }
+		 */
+		
+			Menus.MenuPrincipalInvitado();
 			
 
 	}

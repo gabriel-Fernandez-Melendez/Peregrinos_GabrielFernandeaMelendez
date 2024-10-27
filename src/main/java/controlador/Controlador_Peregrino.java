@@ -18,18 +18,29 @@ import entidades.*;
 public class Controlador_Peregrino {
 
 	//incluire aqui el metodo cuando tenga las credenciales
-	public Peregrino NuevoPeregrino() {
+	public static Peregrino NuevoPeregrino() {
+		boolean val =false;
 		Peregrino p = new Peregrino();
+		do {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("ingrese su nombre para almecenarla en el sistema");
 		String nombre =scan.nextLine();
 		System.out.println("ingrese su contraseña para almecenarla en el sistema");
 		String contraseña =scan.nextLine();
-		return p;
+		CredencialesUsuario cred=new CredencialesUsuario();
+		cred.setNombre(nombre);
+		cred.setClave(contraseña);
+		cred.setTipo_usuario(Usuarios.Peregrino);
+		val=Controlador_CredencialesUsuario.Credenciales_Nuevas(cred);
+		if(val) {
+		System.out.println("se introdujo el nuevo peregrino,ya puede acceder con su nuevo perfil!");	
+		}
 		
+		} while (!val);
+		return p;
 	}
 	
-	
+	//metodo obsoleto con la inclusion de credencialesusuario
 	public static ArrayList<Peregrino> LeerCredenciales() {
 		ArrayList<Peregrino> usuarios = new ArrayList<Peregrino>();
 		String path = "credenciales.txt";

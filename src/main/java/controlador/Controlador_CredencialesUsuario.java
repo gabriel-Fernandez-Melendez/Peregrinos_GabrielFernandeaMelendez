@@ -68,7 +68,7 @@ public class Controlador_CredencialesUsuario {
 		
 		return usuarios;
 	}
-	//metodo para diferenciar el tipo de credenciales del usuario del fichero 
+	//metodo para diferenciar el tipo de credenciales del usuario del fichero (con esto lo podemos enviar al menu que queremos)
 	public static Usuarios TipoDeUsuario(String s){
 		Usuarios tipo_usuario=null;
 		for(Usuarios u: Usuarios.values()){
@@ -81,6 +81,7 @@ public class Controlador_CredencialesUsuario {
 	//buscar una forma de validar un  usuario
 	public static boolean Credenciales_Nuevas(CredencialesUsuario usur) {
 		boolean val = false;
+		long id = 0;
 		ArrayList<CredencialesUsuario> usuarios = new ArrayList<CredencialesUsuario>();
 		usuarios=ListaDeCredenciales();
 		for(CredencialesUsuario cred : usuarios) {
@@ -95,6 +96,8 @@ public class Controlador_CredencialesUsuario {
 		}
 		if(val) {
 			System.out.println("las credenciales son validas, se le registrara en el sistema"+usur.getNombre());
+			id=(usuarios.size())+1;
+			usur.setId(id);
 			EscribirCredenciales(usur);
 		}		
 		return val;
@@ -133,6 +136,25 @@ public class Controlador_CredencialesUsuario {
 		scan.close();
 		return log;
 	}
+	
+	public static CredencialesUsuario UsuarioValido_AdminParada(CredencialesUsuario cred) {
+		long id = 0;
+		ArrayList<CredencialesUsuario> usuarios = new ArrayList<CredencialesUsuario>();
+		usuarios=ListaDeCredenciales();
+		for(CredencialesUsuario c:usuarios) {
+			if(c.getNombre().equalsIgnoreCase(cred.getNombre())&&c.getClave().equalsIgnoreCase(cred.getClave())){
+				System.out.println("los datos ya estan registrados,escoja otro usuario");
+				break;
+			}
+            }
+			System.out.println("las credenciales son validas");
+			cred.setTipo_usuario(Usuarios.Responsable_Parada);
+			id=(usuarios.size())+1;
+			cred.setId(id);
+			return cred;
+	}
+	
+	
 	
 	
 	
