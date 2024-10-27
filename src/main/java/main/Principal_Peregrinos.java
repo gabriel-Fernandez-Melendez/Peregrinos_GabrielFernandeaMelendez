@@ -50,7 +50,7 @@ public class Principal_Peregrinos {
 		 */
 		
 			Menus.MenuPrincipalInvitado();
-			
+			//Menus.Menu_AdminGeneral();
 
 	}
 	}

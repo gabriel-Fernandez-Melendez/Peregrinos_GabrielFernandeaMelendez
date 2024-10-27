@@ -81,18 +81,23 @@ public class Controlador_Parada {
 	}
 	
 	//crear primero el metodo de importar exportar paradas.dat
-	public Parada NuevaParada() {
-		CredencialesUsuario responsable = new CredencialesUsuario();
+	public static boolean NuevaParada() {
+		boolean val= false;
 		Parada parada =new Parada();
-		System.out.println("Usted esta creando una  nueva parada");
+		CredencialesUsuario responsable = new CredencialesUsuario();
 		Scanner scan =new Scanner(System.in);
+		String nombre_parada;
+		String nombre_responsable;
+		char region;
+		do {	
+		System.out.println("Usted esta creando una  nueva parada");		
 		System.out.println("inserte el nombre de la parada");
-		String nombre_parada = scan.nextLine();
+		nombre_parada = scan.nextLine();
 		System.out.println("inserte el caracter de la region donde esta la parada");
-		char region = scan.next().charAt(0);
+		region = scan.next().charAt(0);
 		System.out.println("ahora introduzca las credenciales del que sera responsable de la parada");
 		System.out.println("introduzca el nombre: ");
-		String nombre_responsable = scan.nextLine();
+		nombre_responsable = scan.nextLine();
 		System.out.println("introduzca la contraseña: ");
 		String cantraseña_responsable = scan.nextLine();
 		//validamos el usuario
@@ -100,6 +105,13 @@ public class Controlador_Parada {
 		responsable.setClave(cantraseña_responsable);
 		//sobre escribimos el objeto ahora con los campos que faltaban
 		responsable= Controlador_CredencialesUsuario.UsuarioValido_AdminParada(responsable);
+		if(responsable.getId()<=0) {
+			val=false;
+		}
+		else {
+			val = true;
+		}
+		} while (val);
 		//validamos la parada
 		parada.setNombre(nombre_parada);
 		parada.setRegion(region);
@@ -109,7 +121,8 @@ public class Controlador_Parada {
 		//lo esporto a los ficheros desde el propio metodo
 		ExportarParadas(parada);
 		Controlador_CredencialesUsuario.EscribirCredenciales(responsable);
-		return parada;		
+		//siempre sera true por que mientras no lo sea se vuelve al bucle
+		return val;		
 	}
 	
 	public static Parada ValidadorParadas(Parada p) {
