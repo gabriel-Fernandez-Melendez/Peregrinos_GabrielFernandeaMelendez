@@ -4,3 +4,4 @@ gabo gabo Responsable_parada 1
 nuevo nuevo Responsable_parada 4 
 bueno bueno Peregrino 5 
 admin admin Administrador_general 6
+werggrebv 1234 Responsable_parada 7 

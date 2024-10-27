@@ -31,7 +31,8 @@ public class Controlador_CredencialesUsuario {
 				}
 				if (escritor != null) {
 					escritor.close();
-				}			
+				}
+				System.out.println("se han guardado los datos del: "+credenciales.getTipo_usuario()+"de nombre: "+credenciales.getNombre());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}		
@@ -133,7 +134,6 @@ public class Controlador_CredencialesUsuario {
 			val=false;
 			}
 		}while(!val);
-		scan.close();
 		return log;
 	}
 	
@@ -147,6 +147,7 @@ public class Controlador_CredencialesUsuario {
 				break;
 			}
             }
+		//se asigna el id
 			System.out.println("las credenciales son validas");
 			cred.setTipo_usuario(Usuarios.Responsable_Parada);
 			id=(usuarios.size())+1;

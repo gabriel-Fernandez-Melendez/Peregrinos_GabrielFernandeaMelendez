@@ -41,15 +41,15 @@ public class Principal_Peregrinos {
 		 */
 		/*
 		 * 
-		 * 
-		 * 
-		 * ArrayList<Parada> paradas= new ArrayList<Parada>();
-		 * paradas=Controlador_Parada.ListaDeParadas();
-		 * System.out.println("paradas tamaño "+paradas.size()); for(Parada per :
-		 * paradas) { System.out.println("nombre de parada"+ per.getNombre()); }
 		 */
+		  
+		  ArrayList<Parada> paradas= new ArrayList<Parada>();
+		  paradas=Controlador_Parada.ListaDeParadas();
+		  System.out.println("paradas tamaño "+paradas.size()); for(Parada per :
+		  paradas) { System.out.println("nombre de parada"+ per.getNombre()); }
+		 
 		
-			Menus.MenuPrincipalInvitado();
+			//Menus.MenuPrincipalInvitado();
 			//Menus.Menu_AdminGeneral();
 
 	}

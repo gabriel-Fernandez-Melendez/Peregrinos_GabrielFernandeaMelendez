@@ -88,36 +88,42 @@ public class Controlador_Parada {
 		Scanner scan =new Scanner(System.in);
 		String nombre_parada;
 		String nombre_responsable;
-		char region;
+		String cantraseña_responsable=" ";
+		char region=' ';
 		do {	
 		System.out.println("Usted esta creando una  nueva parada");		
 		System.out.println("inserte el nombre de la parada");
-		nombre_parada = scan.nextLine();
-		System.out.println("inserte el caracter de la region donde esta la parada");
-		region = scan.next().charAt(0);
+		nombre_parada = scan.nextLine();		
 		System.out.println("ahora introduzca las credenciales del que sera responsable de la parada");
 		System.out.println("introduzca el nombre: ");
 		nombre_responsable = scan.nextLine();
-		System.out.println("introduzca la contraseña: ");
-		String cantraseña_responsable = scan.nextLine();
-		//validamos el usuario
 		responsable.setNombre(nombre_responsable);
-		responsable.setClave(cantraseña_responsable);
+		if(nombre_responsable!=null) {
+		System.out.println("introduzca la contraseña: ");
+		 cantraseña_responsable = scan.nextLine();
+		 responsable.setClave(cantraseña_responsable);
+		}
+		System.out.println("inserte el caracter de la region donde esta la parada");
+		region = scan.next().charAt(0);
+		//validamos el usuario
+			
 		//sobre escribimos el objeto ahora con los campos que faltaban
 		responsable= Controlador_CredencialesUsuario.UsuarioValido_AdminParada(responsable);
+		//conprieba que sea superior a 0 el id
 		if(responsable.getId()<=0) {
 			val=false;
+			System.out.println("el if es" + responsable.getId());
 		}
 		else {
 			val = true;
+			System.out.println("el if es" + responsable.getId());
 		}
-		} while (val);
+		} while (!val);
 		//validamos la parada
 		parada.setNombre(nombre_parada);
 		parada.setRegion(region);
 		parada=ValidadorParadas(parada);
 		parada.setResponsable_parada(nombre_responsable);
-		scan.close();
 		//lo esporto a los ficheros desde el propio metodo
 		ExportarParadas(parada);
 		Controlador_CredencialesUsuario.EscribirCredenciales(responsable);

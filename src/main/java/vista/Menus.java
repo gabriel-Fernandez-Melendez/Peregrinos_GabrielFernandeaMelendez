@@ -10,11 +10,11 @@ import entidades.Usuarios;
 
 public class Menus {
 
-	 public static Scanner scan =new Scanner(System.in);
 	
 	public static void MenuPrincipalInvitado() {
 		boolean val =true;
 		int elecc = -1;
+		Scanner scan =new Scanner(System.in);
 		do {
 					
 		do {
@@ -85,7 +85,7 @@ public class Menus {
 	
 	public static void Menu_AdminGeneral() {
 		boolean val =true;
-		
+		Scanner scan =new Scanner(System.in);
 		int elecc = -1;
 		do {
 					
@@ -109,7 +109,7 @@ public class Menus {
 		val=false;
 		switch (elecc) {
 		case 1:
-			System.out.println("funciona");
+			Controlador_Parada.NuevaParada();
 			break;
 		case 0:
 			System.out.println("seguro que quiere salir del programa?");
