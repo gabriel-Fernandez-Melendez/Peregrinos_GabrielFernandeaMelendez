@@ -21,31 +21,17 @@ import entidades.Peregrino;
 import entidades.Usuarios;
 
 public class Controlador_Parada {
-	//direccion donde guardar el archivo de fichero
-	//C:\Users\gabo\eclipse-workspace\gabo
-	
-	/*
-	 * public static void ExportarParadas(Parada parada) { String path =
-	 * "FicherosPeregrino/paradas.dat"; File f = new File(path); FileOutputStream
-	 * exp_bin;
-	 * 
-	 * try { exp_bin = new FileOutputStream(f,true); ObjectOutputStream exp_obj =
-	 * new ObjectOutputStream(exp_bin); exp_obj.writeObject(parada);
-	 * exp_obj.reset(); System.out.println("se guardo la parada con exito!");
-	 * 
-	 * boolean val = false; while (!val) { exp_bin.close(); exp_obj.close(); val =
-	 * true; } } catch (FileNotFoundException e) { // TODO Auto-generated catch
-	 * block e.printStackTrace(); } catch (IOException e) { // TODO Auto-generated
-	 * catch block e.printStackTrace(); } }
-	 */
+	 
 	public static void ExportarParadas(Parada parada) {
+		ArrayList<Parada> paradas=  ListaDeParadas();
+        paradas.add(parada);
         FileOutputStream fos;
         try {
             //importante , esta linea ha de tener siempre al final un true para que pueda escribir mas objetos en su interior
-            fos = new FileOutputStream("paradas.dat", true);
+            fos = new FileOutputStream("FicherosPeregrino/paradas.dat");
             ObjectOutputStream objeto = new ObjectOutputStream(fos);
-            objeto.writeObject(parada);
-            System.out.println("llega aqui");
+            objeto.writeObject(paradas);
+            System.out.println("se ha guardado la parada!");
             objeto.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Parada.class.getName()).log(Level.SEVERE, null, ex);
@@ -55,46 +41,32 @@ public class Controlador_Parada {
 
     }
 	
-	 public static ArrayList<Parada> LectoresParadas() throws IOException {
-	        ArrayList<Parada> paradas = new ArrayList<Parada>();
-	        FileInputStream fis = null;
-	        DataInputStream entrada = null;
-	        String aux;
-	        try {
-	            fis = new FileInputStream("paradas.dat");
-	            entrada = new DataInputStream(fis);
-	            while (entrada.read() > -1) {
-	                long id = entrada.readLong();  //se lee  un entero del fichero    
-	                String nom =entrada.readUTF();
-	                char e  =entrada.readChar();
-	                String per =entrada.readUTF();
-	                System.out.println(id + nom + e + per);  //se muestra en pantalla
-	            }
-	        } catch (FileNotFoundException e) {
-	            System.out.println(e.getMessage());
-	        } catch (EOFException e) {
-	            System.out.println("Fin de fichero");
-	        } catch (IOException e) {
-	            System.out.println(e.getMessage());
-	        } finally {
-	            try {
-	                if (fis != null) {
-	                    fis.close();
-	                }
-	                if (entrada != null) {
-	                    entrada.close();
-	                }
-	            } catch (IOException e) {
-	                System.out.println(e.getMessage());
-	            }
-	        }
-	        return paradas;
-	    }
-	
-
-	
-	
-	
+    @SuppressWarnings("unchecked")
+	public static ArrayList<Parada> ListaDeParadas(){
+    	ArrayList<Parada> paradas= new ArrayList<Parada>();
+		FileInputStream fi;		
+		try {
+			fi= new FileInputStream("FicherosPeregrino/paradas.dat");			
+			if(fi.available()>0) {
+				ObjectInputStream buff = new ObjectInputStream(fi);
+				paradas =(ArrayList<Parada>) buff.readObject();
+			}	
+			else {
+				System.out.println("lista vacia");
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+    	return paradas;   	
+    }
+    
 	public static boolean validar_usuario_Administrador(CredencialesUsuario cred) {
 		boolean val =true;
 		if(cred.getTipo_usuario()==Usuarios.Administrador_General) {
@@ -107,6 +79,7 @@ public class Controlador_Parada {
 		}
 		return val;
 	}
+	
 	//crear primero el metodo de importar exportar paradas.dat
 	public Parada NuevaParada(CredencialesUsuario cred) {
 		Parada parada =new Parada();
@@ -117,14 +90,9 @@ public class Controlador_Parada {
 		parada.setNombre(nombre);
 		System.out.println("inserte el caracter de la region donde esta la parada");
 		char region = scan.next().charAt(0);
-		parada.setRegion(region);
-		
+		parada.setRegion(region);		
 		//este metodo continuara cuando tengamos el metodo de incluir datos en credencias
-		scan.close();
-	
-		
-		
-		return parada;
-		
+		scan.close();		
+		return parada;		
 	}
 }

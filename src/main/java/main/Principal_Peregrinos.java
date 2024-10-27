@@ -24,33 +24,26 @@ public class Principal_Peregrinos {
 		//}
 		//Controlador_CredencialesUsuario.login();
 		
-		  Parada p=new Parada(1L,"humanes",'o',"fernando");
-		  Parada p1=new Parada(2L,"efg",'U',"fernando");
-		  Parada p2=new Parada(3L,"humanes",'U',"fernando"); Parada p3=new
-		  Parada(4L,"humaadsfvdnes",'k',"fernando"); Parada p4=new
-		  Parada(5L,"huvasdfvdmanes",'U',"fernaetyhndo"); Parada p5=new
-		  Parada(6L,"humafvvaanes",'U',"fernando");
-		  Controlador_Parada.ExportarParadas(p);
-		  Controlador_Parada.ExportarParadas(p1);
-		  Controlador_Parada.ExportarParadas(p2);
-		  Controlador_Parada.ExportarParadas(p3);
-		  Controlador_Parada.ExportarParadas(p4);
-		  Controlador_Parada.ExportarParadas(p5);
-		 
-		
-
-			ArrayList<Parada> parada = new ArrayList<Parada>();
-			try {
-				parada=Controlador_Parada.LectoresParadas();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			for(Parada par : parada){
-				par.toString();
+		/*
+		 * Parada p=new Parada(1L,"tineo",'T',"fernando"); Parada p1=new
+		 * Parada(2L,"ACDC_Street",'A',"lemmy"); Parada p2=new
+		 * Parada(3L,"iron maiden",'I',"alejandro"); Parada p3=new
+		 * Parada(4L,"picos de europa",'P',"juana"); Parada p4=new
+		 * Parada(5L,"santiago",'U',"santiago"); Parada p5=new
+		 * Parada(6L,"posada tineo",'U',"maria"); Controlador_Parada.ExportarParadas(p);
+		 * Controlador_Parada.ExportarParadas(p1);
+		 * Controlador_Parada.ExportarParadas(p2);
+		 * Controlador_Parada.ExportarParadas(p3);
+		 * Controlador_Parada.ExportarParadas(p4);
+		 * Controlador_Parada.ExportarParadas(p5);
+		 */
+		  ArrayList<Parada> paradas= new ArrayList<Parada>();
+		  paradas=Controlador_Parada.ListaDeParadas();
+		  System.out.println("paradas tamaño "+paradas.size());
+		  for(Parada per : paradas) {
+			  System.out.println("nombre de parada"+ per.getNombre());
+		  }
 			
-	
-	}
 
 	}
 	}
