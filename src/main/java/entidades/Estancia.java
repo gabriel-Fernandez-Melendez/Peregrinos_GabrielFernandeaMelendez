@@ -25,10 +25,19 @@ public class Estancia {
 		this.fecha = fecha;
 		this.vip = vip;
 	}
+	//nuevo constructor con los argumentos luego de las conexiones
+	public Estancia(Long id, LocalDate fecha, boolean vip, Peregrino peregrino, Parada parada) {
+		super();
+		this.id = id;
+		this.fecha = fecha;
+		this.vip = vip;
+		this.peregrino = peregrino;
+		this.parada = parada;
+	}
 	//getter y setters
 	public Long getId() {
 		return id;
-	}
+	}	
 	public void setId(Long id) {
 		this.id = id;
 	}

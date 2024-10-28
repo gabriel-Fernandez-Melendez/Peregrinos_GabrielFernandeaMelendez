@@ -80,7 +80,8 @@ public class Controlador_CredencialesUsuario {
 		return tipo_usuario;
 	}
 	//buscar una forma de validar un  usuario
-	public static boolean Credenciales_Nuevas(CredencialesUsuario usur) {
+	public static CredencialesUsuario Credenciales_Nuevas(CredencialesUsuario usur) {
+		CredencialesUsuario con_id =usur;
 		boolean val = false;
 		long id = 0;
 		ArrayList<CredencialesUsuario> usuarios = new ArrayList<CredencialesUsuario>();
@@ -98,10 +99,10 @@ public class Controlador_CredencialesUsuario {
 		if(val) {
 			System.out.println("las credenciales son validas, se le registrara en el sistema"+usur.getNombre());
 			id=(usuarios.size())+1;
-			usur.setId(id);
+			con_id.setId(id);
 			EscribirCredenciales(usur);
 		}		
-		return val;
+		return con_id;
 	}
 	public static boolean ValidarLogin() {
 		boolean val = false;

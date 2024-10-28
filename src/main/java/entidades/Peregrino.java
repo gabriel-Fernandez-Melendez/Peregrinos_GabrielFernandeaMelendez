@@ -34,6 +34,18 @@ public class Peregrino {
 		this.tipo_usuario=cargo;
 	}
 	
+	public Peregrino(Long id, String nombre, String nacionalidad, Carnet carnet_peregrino, List<Estancia> estancias,
+			List<Parada> paradas, Usuarios tipo_usuario) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.nacionalidad = nacionalidad;
+		this.carnet_peregrino = carnet_peregrino;
+		this.estancias = estancias;
+		this.paradas = paradas;
+		this.tipo_usuario = tipo_usuario;
+	}
+
 	//getter y setters
 	public Long getId() {
 		return id;
